@@ -1,5 +1,5 @@
 import express from "express";
-import routes from "./routes";
+import userRoutes from "./routes/userRoutes";
 
 //Import Needed Utils and Needed Files
 import config from "config";
@@ -18,5 +18,5 @@ app.listen(PORT, async () => {
     //Connect Database
     await connect()
 
-    routes(app);
+    userRoutes(app);
 });

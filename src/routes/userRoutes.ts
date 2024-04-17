@@ -1,9 +1,9 @@
 import { Express, Request, Response } from "express";
 
 
-export default function routes(app: Express){
+export default function userRoutes(app: Express){
     //Health Check Route
-    app.get("/healthcheck", (req: Request, res: Response) => {
+    app.get("/healthCheck", (req: Request, res: Response) => {
         res.sendStatus(200)
     })
 }
