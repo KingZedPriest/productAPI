@@ -17,6 +17,7 @@ app.listen(PORT, async () => {
 
     //Connect Database
     await connect()
-
+    
+    //Set the Routes
     userRoutes(app);
 });
