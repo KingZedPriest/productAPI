@@ -1,6 +1,7 @@
 import { Express, Request, Response } from "express";
 import { createUserHandler } from "../controller/user.controller";
-
+import validate from "../middleware/validateResource";
+import { createUserSchema } from "../schema/user.schema";
 
 export default function userRoutes(app: Express){
 
@@ -9,6 +10,6 @@ export default function userRoutes(app: Express){
         res.sendStatus(200)
     })
     //Create User Routes
-    app.post("/api/users", createUserHandler);
-    
+    app.post("/api/users", validate(createUserSchema), createUserHandler);
+
 }

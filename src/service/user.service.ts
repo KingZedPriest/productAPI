@@ -1,4 +1,4 @@
-import UserModel, { UserDocument } from "../models/user.model";
+import UserModel from "../models/user.model";
 import logger from "../utils/logger";
 import { UserInput } from "../types/default";
 
@@ -11,5 +11,5 @@ export async function createUser(input: UserInput){
         logger.fatal (`User service error cause of this ${error}`)
         throw new Error(error)
     }
-    
+
 }
