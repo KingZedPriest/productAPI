@@ -10,6 +10,9 @@ const validate = (schema: AnyZodObject) => (req: Request, res: Response, next: N
             query: req.query,
             params: req.params,
         });
+
+        next();
+
     } catch (error: any) {
         logger.error(`Zod Middleware validation error ${error}`)
         return res.status(400).send(error.errors)
