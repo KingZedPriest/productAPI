@@ -9,6 +9,7 @@ export default function userRoutes(app: Express){
     app.get("/healthCheck", (req: Request, res: Response) => {
         res.sendStatus(200)
     })
+    
     //Create User Routes
     app.post("/api/users", validate(createUserSchema), createUserHandler);
 

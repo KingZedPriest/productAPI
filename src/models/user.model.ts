@@ -1,8 +1,9 @@
-import { Schema, model } from "mongoose";
+import { Schema, model, Document } from "mongoose";
 import bcrypt from "bcrypt";
 import config from "config";
 
-export type UserDocument = {
+
+export type UserDocument = Document & {
     email: string;
     name: string;
     password: string;
@@ -10,6 +11,7 @@ export type UserDocument = {
     updatedAt: Date;
     comparePassword(candidatePassword: string): Promise<boolean>;
 };
+
 
 const userSchema = new Schema<UserDocument>(
   {
@@ -22,6 +24,7 @@ const userSchema = new Schema<UserDocument>(
   }
 );
 
+//Hooks
 userSchema.pre("save", async function (next) {
     if (!this.isModified("password")) {
         return next();
