@@ -4,10 +4,11 @@ dotenv.config();
 
 import userRoutes from "./routes/userRoutes";
 
-//Import Needed Utils and Needed Files
+//Import Needed Middlewares, Utils and Needed Files
 import config from "config";
 import connect from "./utils/connect";
 import logger from "./utils/logger";
+import deserializeUser from "./middleware/deserializeUser";
 
 const app = express();
 
@@ -19,6 +20,9 @@ app.use(express.urlencoded({extended: true}));
 
 //Parse JSON bodies (as sent by API clients)
 app.use(express.json());
+
+//Deserialize the user and get the Id
+app.use(deserializeUser)
 
 // Log requests for debugging
 app.use((req, res, next) => {
