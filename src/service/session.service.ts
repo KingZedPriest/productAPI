@@ -1,4 +1,5 @@
-import SessionModel from "../models/sessions.model";
+import { FilterQuery } from "mongoose";
+import SessionModel, { SchemaDocument } from "../models/sessions.model";
 
 export async function createSession(userId: string, userAgent: string) {
 
@@ -6,4 +7,8 @@ export async function createSession(userId: string, userAgent: string) {
 
     return session.toJSON();
 
+}
+
+export async function findSessions(query: FilterQuery<SchemaDocument>) {
+    return SessionModel.find(query).lean()
 }
