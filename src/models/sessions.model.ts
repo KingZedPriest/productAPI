@@ -1,7 +1,7 @@
 import mongoose, { Schema, model } from "mongoose";
 import { UserDocument } from "./user.model";
 
-export type SchemaDocument = {
+export type SessionDocument = {
     user: UserDocument["_id"];
     valid: boolean;
     userAgent: string;
@@ -9,7 +9,7 @@ export type SchemaDocument = {
     updatedAt: Date;
 };
 
-const sessionSchema = new Schema<SchemaDocument>(
+const sessionSchema = new Schema<SessionDocument>(
   {
     user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
     valid: { type: Boolean, default: true },
@@ -20,6 +20,6 @@ const sessionSchema = new Schema<SchemaDocument>(
   }
 );
 
-const SessionModel = model<SchemaDocument>("Session", sessionSchema);
+const SessionModel = model<SessionDocument>("Session", sessionSchema);
 
 export default SessionModel;
