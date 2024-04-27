@@ -30,9 +30,9 @@ export async function updateSession(query: FilterQuery<SessionDocument>, update:
 export async function reIssueAccessToken({refreshToken}: {refreshToken : string}){
     const {decoded} = verifyJWT(refreshToken)
 
-    if (!decoded || !get(decoded, "_id")) return false;
+    if (!decoded || !get(decoded, "session")) return false;
 
-    const session = await SessionModel.findById(get(decoded, "_id"));
+    const session = await SessionModel.findById(get(decoded, "session"));
 
     if (!session || !session.valid) return false;
 
