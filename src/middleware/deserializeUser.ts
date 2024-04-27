@@ -10,7 +10,7 @@ const deserializeUser = async (req: Request, res: Response, next: NextFunction) 
     const refreshToken = get(req, "header.x-refresh")
 
     if (!accessToken){
-        return next()
+        return res.status(401).send("Access token is required");
     }
 
     const {decoded, expired} = verifyJWT(accessToken);

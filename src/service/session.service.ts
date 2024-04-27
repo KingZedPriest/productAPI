@@ -15,7 +15,6 @@ export async function createSession(userId: string, userAgent: string) {
 
 }
 
-
 //Find Session
 export async function findSessions(query: FilterQuery<SessionDocument>) {
     return SessionModel.find(query).lean()
