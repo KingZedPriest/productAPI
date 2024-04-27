@@ -41,7 +41,7 @@ export async function getUserSessionsHandler(req: Request, res: Response) {
 
 }
 
-//Update a session
+//Update(Delete) a session
 export async function deleteSessionHandler(req: Request, res: Response) {
   const sessionId = res.locals.user.session;
 
