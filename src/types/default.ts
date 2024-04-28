@@ -7,7 +7,7 @@ export type UserInput = {
 };
 
 export type ProductInput = {
-    productId: string
+    productId?: string
     user: UserDocument["_id"];
     title: string
     description: string
