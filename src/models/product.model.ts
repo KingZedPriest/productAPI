@@ -1,5 +1,5 @@
 import mongoose, { Schema, model } from "mongoose";
-import { customAlphabet } from "nanoid";
+import { customAlphabet } from 'nanoid'
 import { UserDocument } from "./user.model";
 
 const nanoid = customAlphabet("abcdefghijklmnopqrstuvwxyz0123456789", 10)
@@ -34,6 +34,6 @@ const productSchema = new Schema<ProductDocument>(
   }
 );
 
-const ProductModel = model<ProductDocument>("Session", productSchema);
+const ProductModel = model<ProductDocument>("Products", productSchema);
 
 export default ProductModel;

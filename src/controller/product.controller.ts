@@ -32,7 +32,7 @@ export async function updateProductHandler(req: Request<UpdateProductInput["para
         if (!product){
             return res.status(404).send("Product not found")
         }
-        if (product.user !== userId){
+        if (String(product.user) !== userId){
             return res.status(403).send("User not authorized for this update.")
         }
         const updatedProduct = await findAndUpdateProduct({productId}, update, {new: true})
@@ -72,7 +72,7 @@ export async function deleteProductHandler(req: Request<DeleteProductInput["para
         if (!product){
             return res.status(404).send("Product not found")
         }
-        if (product.user !== userId){
+        if (String(product.user) !== userId){
             return res.status(403).send("User not authorized for this.")
         }
         await deleteProduct({productId})

@@ -33,15 +33,15 @@ export default function userRoutes(app: Express){
     app.delete("/api/sessions", requireUser, deleteSessionHandler)
 
     //Create Product Route
-    app.post("/api/products",[requireUser, validate(createProductSchema)], createProductHandler)
+    app.post("/api/products", [requireUser, validate(createProductSchema)], createProductHandler)
 
     //Fetch Product Route
-    app.get("/api/products/:productId",validate(getProductSchema), getProductHandler)
+    app.get("/api/products/:productId", validate(getProductSchema), getProductHandler)
 
     //Update Product Route
-    app.put("/api/products/:productId",[requireUser, validate(updateProductSchema)], updateProductHandler)
+    app.put("/api/products/:productId", [requireUser, validate(updateProductSchema)], updateProductHandler)
 
     //Delete Product Route
-    app.delete("/api/products/:productId",[requireUser, validate(deleteProductSchema)], deleteProductHandler)
+    app.delete("/api/products/:productId", [requireUser, validate(deleteProductSchema)], deleteProductHandler)
     
 }
