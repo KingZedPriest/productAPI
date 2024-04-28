@@ -4,7 +4,7 @@ import { createProduct, deleteProduct, findAndUpdateProduct, findProduct } from 
 import logger from "../utils/logger";
 
 //Create a product
-export async function CreateProductHandler(req: Request<{}, {}, CreateProductInput["body"]>, res: Response){
+export async function createProductHandler(req: Request<{}, {}, CreateProductInput["body"]>, res: Response){
 
     try {
 

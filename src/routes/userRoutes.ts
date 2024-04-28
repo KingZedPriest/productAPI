@@ -9,6 +9,8 @@ import validate from "../middleware/validateResource";
 import { createUserSchema } from "../schema/user.schema";
 import { createSessionSchema } from "../schema/session.schema";
 import requireUser from "../middleware/requireUser";
+import { createProductSchema, deleteProductSchema, getProductSchema, updateProductSchema } from "../schema/product.schema";
+import { createProductHandler, deleteProductHandler, getProductHandler, updateProductHandler } from "../controller/product.controller";
 
 
 export default function userRoutes(app: Express){
@@ -30,4 +32,16 @@ export default function userRoutes(app: Express){
     //Delete Sessions Route
     app.delete("/api/sessions", requireUser, deleteSessionHandler)
 
+    //Create Product Route
+    app.post("/api/products",[requireUser, validate(createProductSchema)], createProductHandler)
+
+    //Fetch Product Route
+    app.get("/api/products/:productId",validate(getProductSchema), getProductHandler)
+
+    //Update Product Route
+    app.put("/api/products/:productId",[requireUser, validate(updateProductSchema)], updateProductHandler)
+
+    //Delete Product Route
+    app.delete("/api/products/:productId",[requireUser, validate(deleteProductSchema)], deleteProductHandler)
+    
 }

@@ -12,6 +12,6 @@ export async function createUserHandler(req: Request<{}, {}, CreateUserInput["bo
 
     } catch (error: any) {
         logger.error(error)
-        return res.status(409).send(error.message)
+        return res.status(500).send(error.message)
     }
 }
